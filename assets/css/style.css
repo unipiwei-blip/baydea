@@ -267,12 +267,12 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
 
 /* ---------- 页脚 ---------- */
 .site-footer { background: var(--navy-900); color: rgba(255, 255, 255, 0.72); padding: 72px 0 0; }
-.footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 40px; padding-bottom: 56px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px 40px; padding-bottom: 56px; }
 .footer-brand p { margin: 12px auto 0; font-size: 13.5px; line-height: 1.8; max-width: 300px; }
 .footer-grid > .footer-brand { text-align: center; }
 .footer-logo { width: 48px; height: 48px; display: block; margin: 0 auto; }
 .footer-brand__name { margin-top: 12px; color: #fff; font-size: 16px; font-weight: 800; letter-spacing: 0.05em; line-height: 1.35; }
-.footer-brand__sub { margin-top: 4px; font-size: 10px; letter-spacing: 0.14em; color: rgba(255, 255, 255, 0.72); }
+.footer-brand__sub { margin-top: 4px; font-size: 9.5px; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.72); white-space: nowrap; }
 .footer-grid > div:nth-child(n+2) { text-align: center; }
 .footer-grid > div:nth-child(n+2) ul { padding-left: 0; }
 .footer-grid > div:nth-child(n+2) .footer-qr { display: flex; flex-direction: column; align-items: center; margin-bottom: 0; }

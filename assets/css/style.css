@@ -55,11 +55,11 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
 .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gold-500); }
 .section { padding: 96px 0; }
 .section--tint { background: var(--bg); }
-.section-head { max-width: 720px; margin-bottom: 56px; }
+.section-head { max-width: 1000px; margin-bottom: 56px; }
 .section-head--center { margin-left: auto; margin-right: auto; text-align: center; }
 .section-head--center .eyebrow { justify-content: center; }
 .section-head h2 { font-size: clamp(26px, 3.4vw, 40px); letter-spacing: 0.01em; }
-.section-head p { margin-top: 14px; color: var(--muted); font-size: 17px; text-wrap: pretty; }
+.section-head p { margin-top: 14px; color: var(--muted); font-size: 17px; text-wrap: balance; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -90,7 +90,7 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
-.brand__mark { width: 42px; height: 54px; flex: none; }
+.brand__mark { width: 46px; height: 56px; flex: none; }
 .brand__name { font-size: 19px; font-weight: 800; letter-spacing: 0.06em; line-height: 1.2; }
 .brand__sub { font-size: 10.5px; letter-spacing: 0.14em; opacity: 0.72; font-weight: 400; }
 
@@ -269,6 +269,7 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
 .site-footer { background: var(--navy-900); color: rgba(255, 255, 255, 0.72); padding: 72px 0 0; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 56px; }
 .footer-brand p { margin-top: 18px; font-size: 14px; line-height: 1.9; max-width: 320px; }
+.footer-brand .brand__mark { width: 32px; height: 39px; }
 .site-footer h4 { color: #fff; font-size: 15px; letter-spacing: 0.12em; margin-bottom: 20px; }
 .site-footer ul li { margin-bottom: 12px; }
 .site-footer ul a { font-size: 14px; transition: color 0.2s ease; }
@@ -287,7 +288,7 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
 .breadcrumb a { color: rgba(255,255,255,0.8); }
 .breadcrumb a:hover { color: var(--gold-400); }
 .page-hero h1 { color: #fff; font-size: clamp(30px, 4.4vw, 52px); letter-spacing: 0.02em; }
-.page-hero p { margin-top: 18px; max-width: 680px; font-size: 17px; color: rgba(255,255,255,0.80); text-wrap: pretty; }
+.page-hero p { margin-top: 18px; max-width: 900px; font-size: 17px; color: rgba(255,255,255,0.80); text-wrap: balance; }
 
 /* ---------- 内页图文分栏 ---------- */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -450,13 +451,22 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
   .hero__stats { grid-template-columns: 1fr 1fr; }
   .hero__stats .stat { padding: 20px 18px; }
   .stat__num { font-size: 30px; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 26px 22px; }
+  /* 页脚整体居中 */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 26px 22px; text-align: center; }
   .footer-grid > .footer-brand, .footer-grid > div:nth-child(4) { grid-column: 1 / -1; }
-  .footer-grid > div:nth-child(4) { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .footer-grid > .footer-brand { display: flex; flex-direction: column; align-items: center; }
+  .footer-grid > .footer-brand .brand { flex-direction: column; }
+  .footer-grid > .footer-brand p { margin-left: auto; margin-right: auto; }
+  .footer-grid > div:nth-child(4) { display: flex; flex-direction: column; align-items: center; }
   .footer-grid > div:nth-child(4) .footer-qr { display: flex; flex-direction: column; align-items: center; }
   .footer-grid > div:nth-child(4) .footer-contact li { justify-content: center; }
-  .brand__name { font-size: 16px; }
-  .brand__sub { display: none; }
+  .footer-contact li { text-align: left; }
+  .footer-links { text-align: center; }
+  .footer-links ul { justify-content: center; }
+  .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+}
+@media (max-width: 380px) {
+  .header-inner { gap: 8px; }
 }
 
 /* ---------- v2 追加：页脚二维码 / 扫码咨询 / 分页 / 行业资讯 ---------- */
@@ -510,8 +520,9 @@ a.news-card { display: flex; }
 /* ---------- v5: 友情链接 / 行业资讯宽封面卡片 / 详情页间距 / 移动端微调 ---------- */
 .footer-links { border-top: 1px solid rgba(255, 255, 255, 0.10); padding: 26px 0; }
 .footer-links h4 { margin-bottom: 14px; }
-.footer-links ul { display: flex; flex-wrap: wrap; gap: 10px 26px; }
-.footer-links ul a { font-size: 13.5px; color: rgba(255, 255, 255, 0.60); }
+.footer-links ul { display: flex; flex-wrap: wrap; gap: 12px 36px; }
+.footer-links ul li { margin-bottom: 0; }
+.footer-links ul a { font-size: 13.5px; color: rgba(255, 255, 255, 0.60); white-space: nowrap; }
 .footer-links ul a:hover { color: var(--gold-400); }
 .footer-bottom a { color: rgba(255, 255, 255, 0.72); }
 .footer-bottom a:hover { color: var(--gold-400); }
@@ -529,7 +540,7 @@ a.news-card { display: flex; }
 .article-nav { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 56px; border-top: 1px solid var(--line); padding-top: 40px; }
 
 @media (max-width: 560px) {
-  .container { padding: 0 18px; }
+  .container { padding: 0 22px; }
   .hero__inner { padding: 130px 0 72px; }
   .hero h1 { font-size: clamp(28px, 8vw, 34px); }
   .page-hero { padding: 150px 0 68px; }
@@ -538,4 +549,14 @@ a.news-card { display: flex; }
   .inews-item__cover { aspect-ratio: 16 / 9; }
   .inews-grid { grid-template-columns: 1fr; gap: 24px; }
   .article-nav { margin-top: 44px; padding-top: 30px; }
+  /* 头部：LOGO 与院名严格单行 */
+  .brand { gap: 10px; }
+  .brand__mark { width: 38px; height: 46px; }
+  .brand__name { font-size: 14.5px; letter-spacing: 0.02em; white-space: nowrap; }
+  .brand__sub { display: none; }
+  .brand br { display: none; }
+}
+@media (max-width: 380px) {
+  .brand__mark { width: 34px; height: 42px; }
+  .brand__name { font-size: 13px; }
 }

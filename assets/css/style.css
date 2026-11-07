@@ -90,7 +90,7 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
-.brand__mark { width: 44px; height: 44px; flex: none; }
+.brand__mark { width: 42px; height: 54px; flex: none; }
 .brand__name { font-size: 19px; font-weight: 800; letter-spacing: 0.06em; line-height: 1.2; }
 .brand__sub { font-size: 10.5px; letter-spacing: 0.14em; opacity: 0.72; font-weight: 400; }
 
@@ -516,7 +516,7 @@ a.news-card { display: flex; }
 .footer-bottom a { color: rgba(255, 255, 255, 0.72); }
 .footer-bottom a:hover { color: var(--gold-400); }
 
-.inews-grid { display: grid; gap: 36px; max-width: 960px; margin: 0 auto; }
+.inews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px 32px; max-width: 1080px; margin: 0 auto; }
 .inews-item { display: block; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease; }
 .inews-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
 .inews-item__cover { width: 100%; aspect-ratio: 21 / 9; overflow: hidden; background: var(--navy-800); }
@@ -536,5 +536,6 @@ a.news-card { display: flex; }
   .section { padding: 60px 0; }
   .inews-item__body { padding: 20px 18px 22px; }
   .inews-item__cover { aspect-ratio: 16 / 9; }
+  .inews-grid { grid-template-columns: 1fr; gap: 24px; }
   .article-nav { margin-top: 44px; padding-top: 30px; }
 }

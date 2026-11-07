@@ -90,7 +90,7 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
-.brand__mark { width: 46px; height: 56px; flex: none; }
+.brand__mark { width: 46px; height: 46px; flex: none; display: block; }
 .brand__name { font-size: 19px; font-weight: 800; letter-spacing: 0.06em; line-height: 1.2; }
 .brand__sub { font-size: 10.5px; letter-spacing: 0.14em; opacity: 0.72; font-weight: 400; }
 
@@ -267,9 +267,14 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
 
 /* ---------- 页脚 ---------- */
 .site-footer { background: var(--navy-900); color: rgba(255, 255, 255, 0.72); padding: 72px 0 0; }
-.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 56px; }
-.footer-brand p { margin-top: 18px; font-size: 14px; line-height: 1.9; max-width: 320px; }
-.footer-brand .brand__mark { width: 32px; height: 39px; }
+.footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 40px; padding-bottom: 56px; }
+.footer-brand p { margin-top: 16px; font-size: 14px; line-height: 1.9; max-width: 320px; }
+.footer-logo { width: 60px; height: 60px; display: block; }
+.footer-brand__name { margin-top: 14px; color: #fff; font-size: 17px; font-weight: 800; letter-spacing: 0.05em; line-height: 1.35; }
+.footer-brand__sub { margin-top: 6px; font-size: 10.5px; letter-spacing: 0.14em; color: rgba(255, 255, 255, 0.72); }
+.footer-grid > div:nth-child(n+2) { text-align: center; }
+.footer-grid > div:nth-child(n+2) ul { padding-left: 0; }
+.footer-grid > div:nth-child(n+2) .footer-qr { display: flex; flex-direction: column; align-items: center; margin-bottom: 0; }
 .site-footer h4 { color: #fff; font-size: 15px; letter-spacing: 0.12em; margin-bottom: 20px; }
 .site-footer ul li { margin-bottom: 12px; }
 .site-footer ul a { font-size: 14px; transition: color 0.2s ease; }
@@ -455,7 +460,6 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 26px 22px; text-align: center; }
   .footer-grid > .footer-brand, .footer-grid > div:nth-child(4) { grid-column: 1 / -1; }
   .footer-grid > .footer-brand { display: flex; flex-direction: column; align-items: center; }
-  .footer-grid > .footer-brand .brand { flex-direction: column; }
   .footer-grid > .footer-brand p { margin-left: auto; margin-right: auto; }
   .footer-grid > div:nth-child(4) { display: flex; flex-direction: column; align-items: center; }
   .footer-grid > div:nth-child(4) .footer-qr { display: flex; flex-direction: column; align-items: center; }
@@ -551,12 +555,12 @@ a.news-card { display: flex; }
   .article-nav { margin-top: 44px; padding-top: 30px; }
   /* 头部：LOGO 与院名严格单行 */
   .brand { gap: 10px; }
-  .brand__mark { width: 38px; height: 46px; }
+  .brand__mark { width: 38px; height: 38px; }
   .brand__name { font-size: 16px; letter-spacing: 0.02em; white-space: nowrap; }
   .brand__sub { display: none; }
   .brand br { display: none; }
 }
 @media (max-width: 380px) {
-  .brand__mark { width: 34px; height: 42px; }
+  .brand__mark { width: 34px; height: 34px; }
   .brand__name { font-size: 14px; }
 }

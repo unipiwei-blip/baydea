@@ -1,5 +1,5 @@
 /* =========================================================
-   湾区（广东）数字经济研究院 — 全站脚本
+   湾区（广东）数字经济研究院 — 全站脚本（无动画版本，优化首屏加载）
    ========================================================= */
 (function () {
   "use strict";
@@ -33,68 +33,33 @@
     });
   }
 
-  /* ---------- 滚动渐入 ---------- */
-  var revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && revealEls.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        }
+  /* ---------- 列表分页（研究院动态每页6篇 / 行业资讯每页4篇） ---------- */
+  var grid = document.getElementById("news-grid") || document.getElementById("inews-grid");
+  var prevBtn = document.getElementById("page-prev");
+  var nextBtn = document.getElementById("page-next");
+  if (grid && prevBtn && nextBtn) {
+    var cards = Array.prototype.slice.call(grid.querySelectorAll("[data-page]"));
+    var perPage = parseInt(grid.getAttribute("data-perpage") || "6", 10);
+    var curEl = document.getElementById("page-current");
+    var totalEl = document.getElementById("page-total");
+    var pages = Math.max(1, Math.ceil(cards.length / perPage));
+    if (totalEl) totalEl.textContent = pages;
+    var current = 1;
+    function render() {
+      cards.forEach(function (c, idx) {
+        c.style.display = (Math.floor(idx / perPage) + 1 === current) ? "" : "none";
       });
-    }, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
-    revealEls.forEach(function (el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
-  }
-
-  /* ---------- 数字计数动画 ---------- */
-  function animateCount(el) {
-    var target = parseFloat(el.getAttribute("data-count"));
-    var suffix = el.getAttribute("data-suffix") || "";
-    var duration = 1600;
-    var start = null;
-    function frame(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(frame);
+      if (curEl) curEl.textContent = current;
+      prevBtn.disabled = current === 1;
+      nextBtn.disabled = current === pages;
     }
-    requestAnimationFrame(frame);
-  }
-  var counters = document.querySelectorAll("[data-count]");
-  if ("IntersectionObserver" in window && counters.length) {
-    var cio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          cio.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(function (el) { cio.observe(el); });
-  } else {
-    counters.forEach(function (el) {
-      el.textContent = el.getAttribute("data-count") + (el.getAttribute("data-suffix") || "");
+    prevBtn.addEventListener("click", function () {
+      if (current > 1) { current--; render(); window.scrollTo({ top: 0 }); }
     });
-  }
-
-  /* ---------- 联系表单（前端演示：校验 + 提示） ---------- */
-  var form = document.getElementById("contact-form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var name = form.querySelector('[name="name"]');
-      var phone = form.querySelector('[name="phone"]');
-      if (!name.value.trim()) { name.focus(); alert("请填写您的姓名/机构名称"); return; }
-      if (!phone.value.trim()) { phone.focus(); alert("请填写联系电话"); return; }
-      var tip = form.querySelector(".form-note");
-      tip.textContent = "已收到您的合作意向（演示状态）。表单接入后端后，我们将在 1 个工作日内与您联系。";
-      tip.style.color = "#1B5FD9";
-      form.reset();
+    nextBtn.addEventListener("click", function () {
+      if (current < pages) { current++; render(); window.scrollTo({ top: 0 }); }
     });
+    render();
   }
 
   /* ---------- 页脚年份 ---------- */

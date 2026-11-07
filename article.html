@@ -65,10 +65,9 @@
     <div class="container article-wrap">
       <div class="article-cover"><img id="article-cover" src="assets/img/about-institute.jpg" alt=""></div>
       <div class="article-body" id="article-body"></div>
-      <div class="article-actions" id="article-actions"></div>
-      <div class="article-nav">
+      <div class="article-nav" id="article-nav">
         <a class="btn btn--outline" href="javascript:history.back()">← 返回列表</a>
-        <a class="btn btn--primary" href="news.html">更多动态</a>
+        <a class="btn btn--primary" id="more-link" href="news.html">更多动态</a>
       </div>
     </div>
   </section>
@@ -122,9 +121,20 @@
           </ul>
         </div>
       </div>
+      <div class="footer-links">
+        <h4>友情链接</h4>
+        <ul>
+          <li><a href="https://www.gdiis.com.cn/" target="_blank" rel="noopener">创享互联</a></li>
+          <li><a href="https://www.gdcye.com/" target="_blank" rel="noopener">云邦美站</a></li>
+          <li><a href="https://mp.uccu.com.cn/" target="_blank" rel="noopener">小程序商城</a></li>
+          <li><a href="http://www.hzie.com.cn/" target="_blank" rel="noopener">惠州市工程师学会</a></li>
+          <li><a href="https://www.zyyous.com/" target="_blank" rel="noopener">广东省湖南攸县商会</a></li>
+          <li><a href="http://www.91cailie.com/" target="_blank" rel="noopener">才猎天下</a></li>
+        </ul>
+      </div>
       <div class="footer-bottom">
         <span>© <span id="footer-year">2026</span> 湾区（广东）数字经济研究院 版权所有</span>
-        <span>立足湾区 · 服务数字经济</span>
+        <span>技术支持：<a href="https://www.gdiis.com" target="_blank" rel="noopener">创享互联</a></span>
       </div>
     </div>
   </footer>
@@ -159,14 +169,18 @@
         bodyEl.appendChild(el);
       });
       if (a.external) {
-        var act = document.getElementById("article-actions");
+        var nav = document.getElementById("article-nav");
         var link = document.createElement("a");
         link.className = "btn btn--outline";
         link.href = a.external;
         link.target = "_blank";
         link.rel = "noopener";
         link.textContent = "阅读原文（来源：gdiis.com.cn）→";
-        act.appendChild(link);
+        nav.insertBefore(link, nav.firstChild);
+      }
+      if (isIndustry) {
+        document.getElementById("more-link").href = "industry-news.html";
+        document.getElementById("more-link").textContent = "更多资讯";
       }
     })();
   </script>

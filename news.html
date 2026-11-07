@@ -64,7 +64,7 @@
 
   <section class="section">
     <div class="container">
-      <div class="news-grid" id="news-grid">
+      <div class="news-grid" id="news-grid" data-perpage="6">
         <a class="news-card reveal" data-page="1" href="article.html?id=n01">
           <div class="news-card__cover"><img src="assets/img/sector-ai.jpg" alt="FDE 行动计划"></div>
           <div class="news-card__body">
@@ -264,36 +264,24 @@
           </ul>
         </div>
       </div>
+      <div class="footer-links">
+        <h4>友情链接</h4>
+        <ul>
+          <li><a href="https://www.gdiis.com.cn/" target="_blank" rel="noopener">创享互联</a></li>
+          <li><a href="https://www.gdcye.com/" target="_blank" rel="noopener">云邦美站</a></li>
+          <li><a href="https://mp.uccu.com.cn/" target="_blank" rel="noopener">小程序商城</a></li>
+          <li><a href="http://www.hzie.com.cn/" target="_blank" rel="noopener">惠州市工程师学会</a></li>
+          <li><a href="https://www.zyyous.com/" target="_blank" rel="noopener">广东省湖南攸县商会</a></li>
+          <li><a href="http://www.91cailie.com/" target="_blank" rel="noopener">才猎天下</a></li>
+        </ul>
+      </div>
       <div class="footer-bottom">
         <span>© <span id="footer-year">2026</span> 湾区（广东）数字经济研究院 版权所有</span>
-        <span>立足湾区 · 服务数字经济</span>
+        <span>技术支持：<a href="https://www.gdiis.com" target="_blank" rel="noopener">创享互联</a></span>
       </div>
     </div>
   </footer>
 
-  <script>
-    // 动态分页：每页 6 篇
-    (function () {
-      var cards = document.querySelectorAll("#news-grid .news-card");
-      var prev = document.getElementById("page-prev");
-      var next = document.getElementById("page-next");
-      var curEl = document.getElementById("page-current");
-      var total = Math.ceil(cards.length / 6);
-      document.getElementById("page-total").textContent = total;
-      var current = 1;
-      function render() {
-        cards.forEach(function (c) {
-          c.style.display = (parseInt(c.getAttribute("data-page"), 10) === current) ? "" : "none";
-        });
-        curEl.textContent = current;
-        prev.disabled = current === 1;
-        next.disabled = current === total;
-      }
-      prev.addEventListener("click", function () { if (current > 1) { current--; render(); window.scrollTo({ top: 0, behavior: "smooth" }); } });
-      next.addEventListener("click", function () { if (current < total) { current++; render(); window.scrollTo({ top: 0, behavior: "smooth" }); } });
-      render();
-    })();
-  </script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

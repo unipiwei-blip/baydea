@@ -1,4 +1,19 @@
 User-agent: *
+Disallow:
 Allow: /
+Allow: /assets/
+Allow: /*.html
+
+User-agent: Baiduspider
+Disallow:
+Allow: /
+Allow: /assets/
+Allow: /*.html
+
+User-agent: Googlebot
+Disallow:
+Allow: /
+Allow: /assets/
+Allow: /*.html
 
 Sitemap: https://www.baydea.com/sitemap.xml

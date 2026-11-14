@@ -565,3 +565,6 @@ a.news-card { display: flex; }
   .brand__mark { width: 34px; height: 34px; }
   .brand__name { font-size: 14px; }
 }
+
+/* ---------- v15: 微信分享兜底缩略图（隐藏供抓取） ---------- */
+.wx-share-thumb { position: absolute; top: 0; left: -9999px; width: 300px; height: 300px; pointer-events: none; z-index: -1; }

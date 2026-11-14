@@ -24,85 +24,134 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
   <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    body.card-page { background: linear-gradient(160deg, #081A38 0%, #0B2545 45%, #13315C 100%); min-height: 100vh; padding-bottom: 84px; }
-    .card-wrap { max-width: 680px; margin: 0 auto; padding: 48px 20px 40px; position: relative; z-index: 2; }
-    .card-top { text-align: center; padding: 12px 0 8px; }
-    .card-avatar { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255, 195, 92, 0.85); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35); display: block; margin: 0 auto; }
-    .card-name { margin-top: 20px; color: #fff; font-size: 30px; font-weight: 800; letter-spacing: 0.08em; }
-    .card-title-tag { display: inline-block; margin-top: 12px; padding: 6px 22px; border-radius: 999px; background: rgba(240, 162, 46, 0.16); border: 1px solid rgba(255, 195, 92, 0.55); color: #FFC35C; font-size: 14.5px; letter-spacing: 0.14em; }
-    .card-org { margin-top: 14px; color: rgba(255, 255, 255, 0.82); font-size: 15.5px; letter-spacing: 0.1em; }
-    .card-org-en { margin-top: 6px; color: rgba(255, 255, 255, 0.45); font-size: 10px; letter-spacing: 0.16em; }
-    .card-contact { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 16px; padding: 8px 20px; margin-top: 28px; }
-    .card-contact a.row, .card-contact button.row { display: flex; align-items: center; gap: 14px; width: 100%; padding: 15px 0; border: none; background: none; color: rgba(255,255,255,0.9); font-size: 15px; text-align: left; cursor: pointer; font-family: inherit; }
-    .card-contact .row + .row { border-top: 1px solid rgba(255, 255, 255, 0.09); }
-    .card-contact .ico { flex: none; width: 34px; height: 34px; border-radius: 10px; background: rgba(27, 95, 217, 0.25); color: #FFC35C; display: flex; align-items: center; justify-content: center; font-size: 15px; }
-    .card-contact .row .arrow { margin-left: auto; color: rgba(255,255,255,0.35); font-size: 13px; }
-    .card-section { margin-top: 30px; }
-    .card-section h2 { color: #fff; font-size: 17px; letter-spacing: 0.12em; display: flex; align-items: center; gap: 10px; }
-    .card-section h2::before { content: ""; width: 22px; height: 2px; background: #F0A22E; }
-    .card-section p { margin-top: 14px; color: rgba(255, 255, 255, 0.78); font-size: 14.5px; line-height: 2; }
-    .card-chips { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
-    .card-chips span { padding: 7px 16px; border-radius: 999px; background: rgba(27, 95, 217, 0.22); border: 1px solid rgba(120, 160, 230, 0.35); color: rgba(255,255,255,0.88); font-size: 13px; letter-spacing: 0.06em; }
-    .unit-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-    .unit-cards figure { border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); }
-    .unit-cards figure.wide { grid-column: 1 / -1; }
-    .unit-cards img { width: 100%; height: 120px; object-fit: cover; display: block; }
-    .unit-cards figure.wide img { height: 150px; }
-    .unit-cards figcaption { padding: 10px 14px; color: rgba(255,255,255,0.85); font-size: 13px; }
-    .unit-cards figcaption b { color: #FFC35C; font-weight: 600; }
-    .card-bottombar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; background: rgba(8, 26, 56, 0.97); border-top: 1px solid rgba(255, 255, 255, 0.12); display: flex; }
-    .card-bottombar a { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 15px 0; color: #fff; font-size: 15px; letter-spacing: 0.06em; text-decoration: none; }
-    .card-bottombar a + a { border-left: 1px solid rgba(255, 255, 255, 0.12); }
-    .card-bottombar a b { color: #FFC35C; font-weight: 700; }
-    .qr-modal { position: fixed; inset: 0; z-index: 200; background: rgba(4, 12, 28, 0.8); display: none; align-items: center; justify-content: center; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "PingFang SC", "HarmonyOS Sans SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+      color: #17233A; line-height: 1.75; font-size: 15px;
+      background:
+        radial-gradient(420px 260px at 85% 6%, rgba(27, 95, 217, 0.14), transparent 70%),
+        radial-gradient(360px 240px at 8% 22%, rgba(46, 124, 246, 0.12), transparent 70%),
+        radial-gradient(300px 220px at 90% 58%, rgba(232, 68, 46, 0.08), transparent 70%),
+        linear-gradient(180deg, #F4F9FF 0%, #EAF2FF 55%, #E3EDFF 100%);
+      min-height: 100vh; padding-bottom: 76px; overflow-x: hidden;
+    }
+    .wrap { max-width: 460px; margin: 0 auto; padding: 30px 18px 34px; }
+
+    /* ---- 顶部名牌 ---- */
+    .hero-card {
+      background: linear-gradient(150deg, rgba(255,255,255,0.92), rgba(240,247,255,0.85));
+      border: 1px solid rgba(255,255,255,0.9); border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(27, 95, 217, 0.14);
+      text-align: center; padding: 30px 20px 26px; position: relative; overflow: hidden;
+    }
+    .hero-card::before { content: ""; position: absolute; top: -70px; right: -60px; width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,95,217,0.12), transparent 70%); }
+    .avatar-ring { width: 128px; height: 128px; margin: 0 auto; border-radius: 50%; padding: 4px;
+      background: linear-gradient(140deg, #1B5FD9, #2E7CF6 55%, #E8442E); box-shadow: 0 10px 26px rgba(27, 95, 217, 0.32); }
+    .avatar-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; border: 3px solid #fff; }
+    .name { margin-top: 18px; font-size: 28px; font-weight: 800; letter-spacing: 0.14em; color: #0B2545; }
+    .title-tag { display: inline-block; margin-top: 10px; padding: 6px 24px; border-radius: 999px; font-size: 14px; font-weight: 700; letter-spacing: 0.18em; color: #fff;
+      background: linear-gradient(90deg, #1B5FD9 0%, #2E7CF6 60%, #E8442E 130%); box-shadow: 0 6px 16px rgba(27, 95, 217, 0.3); }
+    .org { margin-top: 14px; font-size: 15px; font-weight: 600; color: #13315C; letter-spacing: 0.08em; }
+    .org-en { margin-top: 4px; font-size: 9.5px; letter-spacing: 0.14em; color: #8FA3C2; }
+    .site-line { margin-top: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 999px;
+      background: #EDF4FF; border: 1px solid #CBDCFA; font-size: 13.5px; font-weight: 600; color: #1B5FD9; text-decoration: none; }
+
+    /* ---- 通用区块 ---- */
+    .section { margin-top: 18px; background: linear-gradient(150deg, rgba(255,255,255,0.92), rgba(240,247,255,0.86));
+      border: 1px solid rgba(255,255,255,0.9); border-radius: 22px; padding: 22px 20px;
+      box-shadow: 0 12px 32px rgba(27, 95, 217, 0.10); }
+    .section h2 { font-size: 16.5px; font-weight: 800; color: #0B2545; letter-spacing: 0.1em; display: flex; align-items: center; gap: 9px; }
+    .section h2 .bar { width: 4px; height: 16px; border-radius: 2px; background: linear-gradient(180deg, #1B5FD9, #E8442E); flex: none; }
+    .section p { margin-top: 12px; font-size: 14px; color: #40536F; line-height: 2; }
+
+    /* ---- 联系卡 ---- */
+    .contact { margin-top: 18px; border-radius: 22px; overflow: hidden;
+      background: linear-gradient(150deg, rgba(255,255,255,0.94), rgba(240,247,255,0.88));
+      border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 12px 32px rgba(27, 95, 217, 0.10); }
+    .contact a, .contact button { display: flex; align-items: center; gap: 13px; width: 100%; padding: 14px 18px;
+      border: none; background: none; font-size: 14.5px; color: #17233A; text-decoration: none; text-align: left; cursor: pointer; font-family: inherit; }
+    .contact a + a, .contact a + button, .contact button + a, .contact button + button { border-top: 1px solid #E6EEFA; }
+    .ico { flex: none; width: 36px; height: 36px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(140deg, #E3EEFF, #D5E6FF); color: #1B5FD9; font-size: 15px; }
+    .contact .txt b { display: block; font-size: 14.5px; color: #0B2545; font-weight: 600; }
+    .contact .txt span { display: block; font-size: 12px; color: #7E92B0; }
+    .contact .arrow { margin-left: auto; color: #A9BBD6; font-size: 12.5px; flex: none; }
+
+    /* ---- 标签 ---- */
+    .chips { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    .chips span { padding: 7px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 600; color: #1B5FD9;
+      background: #EDF4FF; border: 1px solid #CBDCFA; }
+
+    /* ---- 单位图文 ---- */
+    .unit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+    .unit-grid figure { border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid #E6EEFA; box-shadow: 0 4px 14px rgba(27,95,217,0.08); }
+    .unit-grid figure.wide { grid-column: 1 / -1; }
+    .unit-grid img { width: 100%; height: 96px; object-fit: cover; display: block; }
+    .unit-grid figure.wide img { height: 132px; }
+    .unit-grid figcaption { padding: 8px 11px; font-size: 12px; color: #40536F; line-height: 1.6; }
+    .unit-grid figcaption b { color: #1B5FD9; font-weight: 700; }
+
+    /* ---- 底部栏 ---- */
+    .bottombar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.96); border-top: 1px solid #DCE7F8; box-shadow: 0 -6px 24px rgba(27, 95, 217, 0.10);
+      display: flex; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); gap: 10px; max-width: 460px; margin: 0 auto; }
+    .bottombar a { flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px; padding: 12px 0;
+      border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.04em; }
+    .bb-site { color: #1B5FD9; background: #EDF4FF; border: 1px solid #CBDCFA; }
+    .bb-save { color: #fff; background: linear-gradient(90deg, #1B5FD9, #2E7CF6); box-shadow: 0 6px 16px rgba(27, 95, 217, 0.32); }
+
+    /* ---- 二维码弹窗 ---- */
+    .qr-modal { position: fixed; inset: 0; z-index: 200; background: rgba(11, 37, 69, 0.55); display: none; align-items: center; justify-content: center; }
     .qr-modal.is-open { display: flex; }
-    .qr-box { background: #fff; border-radius: 18px; padding: 26px 26px 20px; text-align: center; max-width: 82vw; }
-    .qr-box img { width: 230px; height: 230px; border-radius: 12px; display: block; margin: 0 auto; object-fit: cover; }
-    .qr-box p { margin-top: 14px; color: #17233A; font-size: 14.5px; line-height: 1.8; }
+    .qr-box { background: #fff; border-radius: 20px; padding: 24px 24px 18px; text-align: center; max-width: 82vw;
+      box-shadow: 0 20px 60px rgba(11, 37, 69, 0.35); }
+    .qr-box img { width: 220px; height: 220px; border-radius: 14px; display: block; margin: 0 auto; object-fit: cover; border: 1px solid #E6EEFA; }
+    .qr-box p { margin-top: 13px; color: #17233A; font-size: 14px; line-height: 1.8; }
     .qr-box p b { color: #0B2545; }
-    .qr-close { margin-top: 14px; padding: 9px 34px; border-radius: 999px; border: 1px solid #C9D6EA; background: #F5F8FC; color: #0B2545; font-size: 14px; cursor: pointer; font-family: inherit; }
-    @media (max-width: 400px) { .card-name { font-size: 26px; } .unit-cards img { height: 96px; } }
+    .qr-close { margin-top: 13px; padding: 9px 36px; border-radius: 999px; border: none; background: linear-gradient(90deg, #1B5FD9, #2E7CF6);
+      color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
   </style>
 </head>
-<body class="card-page">
+<body>
 
-  <div class="card-wrap">
+  <div class="wrap">
 
-    <div class="card-top">
-      <img class="card-avatar" src="assets/img/avatar-piwei.jpg" alt="皮伟">
-      <div class="card-name">皮 伟</div>
-      <div><span class="card-title-tag">执 行 院 长</span></div>
-      <div class="card-org">湾区（广东）数字经济研究院</div>
-      <div class="card-org-en">BAY AREA DIGITAL ECONOMY ACADEMY (GUANGDONG)</div>
+    <div class="hero-card">
+      <div class="avatar-ring"><img src="assets/img/avatar-piwei.jpg" alt="皮伟"></div>
+      <div class="name">皮 伟</div>
+      <div><span class="title-tag">执 行 院 长</span></div>
+      <div class="org">湾区（广东）数字经济研究院</div>
+      <div class="org-en">BAY AREA DIGITAL ECONOMY ACADEMY (GUANGDONG)</div>
+      <a class="site-line" href="https://www.baydea.com" target="_blank" rel="noopener">🌐 官网 www.baydea.com ›</a>
     </div>
 
-    <div class="card-contact">
-      <a class="row" href="tel:13537205312"><span class="ico">✆</span>电话：13537205312<span class="arrow">拨打 ›</span></a>
-      <a class="row" href="mailto:1251251712@qq.com"><span class="ico">✉</span>邮箱：1251251712@qq.com<span class="arrow">发送 ›</span></a>
-      <a class="row" href="https://www.baydea.com" target="_blank" rel="noopener"><span class="ico">🌐</span>官网：www.baydea.com<span class="arrow">访问 ›</span></a>
-      <button class="row" type="button" id="qr-open"><span class="ico">💬</span>微信：点击查看二维码<span class="arrow">扫码 ›</span></button>
+    <div class="contact">
+      <a href="tel:13537205312"><span class="ico">✆</span><span class="txt"><b>电话联系</b><span>13537205312</span></span><span class="arrow">拨打 ›</span></a>
+      <a href="mailto:1251251712@qq.com"><span class="ico">✉</span><span class="txt"><b>商务合作邮箱</b><span>1251251712@qq.com</span></span><span class="arrow">发送 ›</span></a>
+      <button type="button" id="qr-open"><span class="ico">💬</span><span class="txt"><b>微信沟通</b><span>点击查看二维码名片</span></span><span class="arrow">扫码 ›</span></button>
     </div>
 
-    <div class="card-section">
-      <h2>个人介绍</h2>
+    <div class="section">
+      <h2><span class="bar"></span>个人介绍</h2>
       <p>皮伟长期扎根高校与企业的跨界一线，先后在教育科技企业与高校从事管理运营工作，主导过教育信息化平台的研发与运营、院校合作体系的搭建与落地，积累了从产品研发、市场运营到校企资源整合的复合经验。</p>
       <p>近年来聚焦产教融合与国际教育两大方向：推动高校与行业企业共建产业学院、实训基地与订单班，把企业真实项目与岗位需求嵌入人才培养全过程；同时深耕国际教育板块，推进中外合作办学与中韩本硕博留学项目，为院校和学生提供从项目引入、课程共建到升学服务的全流程支持。</p>
-      <div class="card-chips"><span>产教融合</span><span>教育信息化</span><span>国际教育</span></div>
+      <div class="chips"><span>产教融合</span><span>教育信息化</span><span>国际教育</span></div>
     </div>
 
-    <div class="card-section">
-      <h2>单位介绍</h2>
+    <div class="section">
+      <h2><span class="bar"></span>单位介绍</h2>
       <p>湾区（广东）数字经济研究院是立足粤港澳大湾区的新型研究与服务机构，以“研究 + 教育 + 产业”三位一体的方式，围绕数字经济、产业学院、跨境电商、人工智能、国际教育五大板块开展业务，为政府、高校与企业提供智库研究与产教融合服务。</p>
-      <div class="unit-cards">
+      <div class="unit-grid">
         <figure class="wide">
           <img src="assets/img/about-institute.jpg" alt="研究院">
           <figcaption><b>智库研究：</b>服务区域数字经济高质量发展，承接课题研究与决策咨询</figcaption>
         </figure>
         <figure>
           <img src="assets/img/sector-digital.jpg" alt="数字经济">
-          <figcaption><b>数字经济：</b>数智化转型咨询与企业陪跑服务</figcaption>
+          <figcaption><b>数字经济：</b>数智化转型咨询与企业陪跑</figcaption>
         </figure>
         <figure>
           <img src="assets/img/sector-college.jpg" alt="产业学院">
@@ -110,7 +159,7 @@
         </figure>
         <figure>
           <img src="assets/img/sector-ecommerce.jpg" alt="跨境电商">
-          <figcaption><b>跨境电商：</b>人才培养与企业出海服务</figcaption>
+          <figcaption><b>跨境电商：</b>人才培养与企业出海</figcaption>
         </figure>
         <figure>
           <img src="assets/img/sector-intl.jpg" alt="国际教育">
@@ -121,9 +170,9 @@
 
   </div>
 
-  <div class="card-bottombar">
-    <a href="https://www.baydea.com" target="_blank" rel="noopener"><b>🌐</b>官方网站</a>
-    <a href="piwei.vcf" download="皮伟-执行院长.vcf"><b>📇</b>保存联系人</a>
+  <div class="bottombar">
+    <a class="bb-site" href="https://www.baydea.com" target="_blank" rel="noopener">🌐 官方网站</a>
+    <a class="bb-save" href="piwei.vcf" download="皮伟-执行院长.vcf">📇 保存联系人</a>
   </div>
 
   <div class="qr-modal" id="qr-modal">

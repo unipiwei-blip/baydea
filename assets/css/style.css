@@ -268,7 +268,7 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px 40px; padding-bottom: 56px; }
 .footer-brand p { margin: 12px auto 0; font-size: 13.5px; line-height: 1.8; max-width: 300px; }
 .footer-grid > .footer-brand { text-align: center; }
-.footer-logo { width: 48px; height: 48px; display: block; margin: 0 auto; }
+.footer-logo { width: auto; height: 56px; display: block; margin: 0 auto; }
 .footer-brand__name { margin-top: 12px; color: #fff; font-size: 16px; font-weight: 800; letter-spacing: 0.05em; line-height: 1.35; }
 .footer-brand__sub { margin-top: 4px; font-size: 9.5px; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.72); white-space: nowrap; }
 .footer-grid > div:nth-child(n+2) { text-align: center; }
@@ -429,18 +429,20 @@ h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; color: var(--navy-800); }
     position: fixed; top: 0; right: 0; bottom: 0; width: min(320px, 84vw);
     background: var(--navy-900); padding: 96px 32px 40px;
     transform: translateX(100%); visibility: hidden; z-index: 90;
-    overflow-y: auto;
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
   }
   .main-nav.is-open { transform: translateX(0); visibility: visible; }
   .main-nav ul { flex-direction: column; align-items: stretch; gap: 4px; }
   .main-nav a.nav-link, .main-nav .nav-drop > a { display: block; padding: 14px 12px; font-size: 16px; }
   .nav-drop__menu {
     position: static; transform: none; opacity: 1; visibility: visible;
-    background: transparent; box-shadow: none; padding: 0 0 0 16px; display: none;
+    background: transparent; box-shadow: none; padding: 0 0 0 16px;
+    display: block; margin: 0 0 8px; border-left: 1px solid rgba(255,255,255,0.16);
   }
-  .nav-drop:hover .nav-drop__menu { display: block; }
-  .nav-drop__menu a { color: rgba(255,255,255,0.75); }
-  .nav-drop__menu a:hover { background: rgba(255,255,255,0.08); }
+  .main-nav .nav-drop:hover .nav-drop__menu,
+  .main-nav .nav-drop:focus-within .nav-drop__menu { transform: none; opacity: 1; visibility: visible; }
+  .nav-drop__menu a { color: rgba(255,255,255,0.82); padding: 10px 14px; font-size: 14.5px; }
+  .nav-drop__menu a:hover, .nav-drop__menu a:active { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.95); }
   .nav-toggle { display: block; z-index: 95; }
   .nav-cta { display: none; }
   .hero__stats { grid-template-columns: repeat(2, 1fr); }
@@ -555,12 +557,14 @@ a.news-card { display: flex; }
   /* 头部：LOGO 与院名严格单行 */
   .brand { gap: 10px; }
   .brand__mark { width: auto; height: 30px; }
+  .footer-logo { width: auto; height: 38px; }
   .brand__name { font-size: 16px; letter-spacing: 0.02em; white-space: nowrap; }
   .brand__sub { display: none; }
   .brand br { display: none; }
 }
 @media (max-width: 380px) {
   .brand__mark { width: auto; height: 26px; }
+  .footer-logo { width: auto; height: 32px; }
   .brand__name { font-size: 14px; }
 }
 

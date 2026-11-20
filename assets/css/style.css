@@ -570,3 +570,6 @@ a.news-card { display: flex; }
 
 /* ---------- v15: 微信分享兜底缩略图（隐藏供抓取） ---------- */
 .wx-share-thumb { position: absolute; top: 0; left: -9999px; width: 300px; height: 300px; pointer-events: none; z-index: -1; }
+
+/* ---------- v47: 正文加粗小标题段首空两字符 ---------- */
+.article-body h3, .article-body h4 { text-indent: 2em !important; }
